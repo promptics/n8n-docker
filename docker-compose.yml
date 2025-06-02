@@ -20,7 +20,7 @@ services:
       - mongodb_data:/data/db
 
   n8n:
-    image: n8nio/n8n
+    build: .
     restart: unless-stopped
     ports:
       - "5678:5678"
@@ -33,6 +33,10 @@ services:
       DB_POSTGRESDB_PASSWORD: n8n
       EXECUTIONS_PROCESS: main
       N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN: "true"
+      N8N_DEFAULT_EMAIL: admin@example.com
+      N8N_DEFAULT_PASSWORD: changeme
+      N8N_DEFAULT_FIRSTNAME: Owner
+      N8N_DEFAULT_LASTNAME: User
     depends_on:
       - postgres
       - mongodb
