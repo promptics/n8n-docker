@@ -1,6 +1,7 @@
 # n8n-docker
 
 This repository contains a simple Docker Compose setup for running [n8n](https://n8n.io/) together with PostgreSQL (with the `pgvector` extension) and MongoDB.
+The provided `Dockerfile` extends the official n8n image and installs `curl` so the startup script can wait for n8n to become reachable.
 
 ## Usage
 
