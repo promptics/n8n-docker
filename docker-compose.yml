@@ -19,9 +19,11 @@ services:
     volumes:
       - mongodb_data:/data/db
 
-  pdf-toolkit:
-    image: pdf-toolkit
+  stirling-pdf:
+    image: ghcr.io/stirling-pdf/stirling-pdf:latest
     restart: unless-stopped
+    ports:
+      - "8080:8080"
 
   n8n:
     build: .
