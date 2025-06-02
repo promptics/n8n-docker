@@ -28,6 +28,7 @@ MongoDB is started with a default user of `root` and password `example`. Adjust 
 - **n8n**: Low-code workflow automation tool.
 - **PostgreSQL**: Database for n8n configured with the `pgvector` extension.
 - **MongoDB**: Additional database which can be used by custom workflows.
+- **PDF Toolkit**: Tools for processing PDF files.
 
 ## Volumes
 
