@@ -23,12 +23,15 @@ The PostgreSQL service uses the `pgvector/pgvector` image and initializes the `v
 
 MongoDB is started with a default user of `root` and password `example`. Adjust the credentials in `docker-compose.yml` as needed.
 
+Adminer is exposed on port `8081` and allows managing the PostgreSQL database through a browser.
+
 ## Services
 
 - **n8n**: Low-code workflow automation tool.
 - **PostgreSQL**: Database for n8n configured with the `pgvector` extension.
 - **MongoDB**: Additional database which can be used by custom workflows.
 - **Stirling-PDF**: Tools for processing PDF files.
+- **Adminer**: Browser-based interface for PostgreSQL management.
 
 ## Volumes
 
