@@ -7,6 +7,8 @@ services:
       POSTGRES_USER: n8n
       POSTGRES_PASSWORD: n8n
       POSTGRES_DB: n8n
+    ports:
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./postgres/init-vector.sql:/docker-entrypoint-initdb.d/init-vector.sql:ro
@@ -20,10 +22,18 @@ services:
       - mongodb_data:/data/db
 
   stirling-pdf:
-    image: ghcr.io/stirling-pdf/stirling-pdf:latest
-    restart: unless-stopped
+    image: docker.stirlingpdf.com/stirlingtools/stirling-pdf:latest
     ports:
-      - "8080:8080"
+      - '8080:8080'
+    volumes:
+      - ./StirlingPDF/trainingData:/usr/share/tessdata # Required for extra OCR languages
+      - ./StirlingPDF/extraConfigs:/configs
+      - ./StirlingPDF/customFiles:/customFiles/
+      - ./StirlingPDF/logs:/logs/
+      - ./StirlingPDF/pipeline:/pipeline/
+    environment:
+      - DOCKER_ENABLE_SECURITY=false
+      - LANGS=en_GB
 
   adminer:
     image: adminer
@@ -43,12 +53,11 @@ services:
       DB_POSTGRESDB_DATABASE: n8n
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: n8n
-      EXECUTIONS_PROCESS: main
-      N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN: "true"
       N8N_DEFAULT_EMAIL: admin@example.com
       N8N_DEFAULT_PASSWORD: changeme
       N8N_DEFAULT_FIRSTNAME: Owner
       N8N_DEFAULT_LASTNAME: User
+      N8N_RUNNERS_ENABLED: true
     depends_on:
       - postgres
       - mongodb
