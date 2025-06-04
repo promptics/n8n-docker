@@ -33,6 +33,16 @@ Adminer is exposed on port `8081` and allows managing the PostgreSQL database th
 - **Stirling-PDF**: Tools for processing PDF files.
 - **Adminer**: Browser-based interface for PostgreSQL management.
 
+## Endpoints
+
+- **n8n UI**: <http://localhost:5678>
+- **n8n REST API**: <http://localhost:5678/rest>
+- **Stirling-PDF**: <http://localhost:8080>
+- **Adminer**: <http://localhost:8081>
+- **PostgreSQL**: `postgres://n8n:n8n@localhost:5432/n8n`
+- **MongoDB**: `mongodb://root:example@mongodb:27017` (internal only)
+
+
 ## Volumes
 
 - `n8n_data` – stores n8n configuration and workflows
